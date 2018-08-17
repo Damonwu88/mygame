@@ -4,14 +4,10 @@
 **将h5小游戏里的一些方法替换为小游戏对应的原生方法即可**
 
 通过微信的接口，从JsCore里直接创建canvas，是跳过Dom的，所以在浏览器中，需要通过document.getElementById这样的方法或者是Selector获取canvas的dom对象
-```h5
-this.canvas = document.getElementById("canvasId");
-```
+```js
+this.canvas = document.getElementById("canvasId");替换为this.canvas = wx.createCanvas();
 
-```小游戏
-this.canvas = wx.createCanvas();
 ```
-
 ```js
 wx.createInnerAudioContext();
 wx.onTouchStart();
