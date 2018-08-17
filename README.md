@@ -5,7 +5,9 @@
 
 通过微信的接口，从JsCore里直接创建canvas，是跳过Dom的，所以在浏览器中，需要通过document.getElementById这样的方法或者是Selector获取canvas的dom对象
 ```js
-this.canvas = document.getElementById("canvasId");替换为this.canvas = wx.createCanvas();
+this.canvas = document.getElementById("canvasId");
+替换为
+this.canvas = wx.createCanvas();
 
 ```
 ```js
