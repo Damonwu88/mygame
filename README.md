@@ -1,13 +1,16 @@
-# 微信小程序使用说明
-**此版本是在小程序中使用的版本，即在浏览器中是没办法正常识别的，需要浏览器版本的同学请自行到群文件去下载**
 
-或者，可以直接修改源码以使其在浏览器上运行
 
-```js
-this.canvas = wx.createCanvas();
+# 微信小程序版本使用说明
+**将h5小游戏里的一些方法替换为小游戏对应的原生方法即可**
+
+通过微信的接口，从JsCore里直接创建canvas，是跳过Dom的，所以在浏览器中，需要通过document.getElementById这样的方法或者是Selector获取canvas的dom对象
+```h5
+this.canvas = document.getElementById("canvasId");
 ```
 
-这行代码是通过微信的接口，从JsCore里直接创建canvas，是跳过Dom的，所以在浏览器中，需要通过document.getElementById这样的方法或者是Selector获取canvas的dom对象
+```小游戏
+this.canvas = wx.createCanvas();
+```
 
 ```js
 wx.createInnerAudioContext();
