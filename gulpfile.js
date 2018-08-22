@@ -58,7 +58,7 @@ gulp.task('babel', function() {
 
 // 监听任务
 gulp.task('watch', function() {
-    gulp.watch('./*.*',['babel']);
+    // gulp.watch('./*.*',['babel']);
     gulp.watch('./js/*.*',['babel']);
     gulp.watch('./js/**/*.*',['babel']);
 });
