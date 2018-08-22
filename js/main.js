@@ -11,7 +11,12 @@ import Director from "./Director.js";
 import BackGround from "./runtime/BackGround.js";
 import Land from "./runtime/Land.js";
 import StartButton from "./player/StartButton.js";
-import { BeginButton } from "./player/BeginButton.js";
+import {
+	BeginButton
+} from "./player/BeginButton.js";
+import {
+	Birds
+} from "./player/Birds.js";
 
 //初始化整个游戏的精灵，作为游戏开始的入口
 export default class Main {
@@ -36,13 +41,20 @@ export default class Main {
 	init() {
 		//重置游戏是没有结束的
 		this.director.isGameOver = false;
-		this.datastore.put("bg", BackGround).put("land", Land).put("startButton", StartButton);
+		this.datastore
+			.put("pencils", [])
+			.put("bg", BackGround)
+			.put("land", Land)
+			.put("birds", Birds)
+			.put("startButton", StartButton);
+		//游戏开始前预先创建铅笔
+		this.director.createPencil();
 		this.director.run();
 	}
 
 	/**
 	 * 资源首次加载
-	 * @param {*} map是ResourceLoader里回调的资源路径map对象
+	 * @param {map} map是ResourceLoader里回调的资源路径map对象
 	 */
 	onResourceFirstLoaded(map) {
 		this.datastore.canvas = document.getElementById("myGame");
@@ -60,18 +72,17 @@ export default class Main {
 		//开始渲染
 		this.datastore.get("bg").draw();
 		this.datastore.get("beginButton").draw();
-
 	}
 
 	registerEvent() {
 		this.datastore.canvas.addEventListener("touchstart", e => {
 			e.preventDefault();
 			if (this.director.isGameOver) {
-				console.log('游戏开始!');
+				console.log("游戏开始!");
 				this.init();
 			} else {
-				console.log("游戏结束！");
+				this.director.birdsEvent();
 			}
-		})
+		});
 	}
 }

@@ -1,8 +1,14 @@
+/* 精灵类
+ * @Author: Damon Wu 
+ * @Date: 2018-08-21 10:35:38 
+ * @Last Modified by: Damon Wu
+ * @Last Modified time: 2018-08-21 14:37:05
+ */
 import DataStore from "./DataStore.js";
 
 //精灵基类，负责初始化精灵加载的资源和大小以及位置
 class Sprite {
-	constructor(img = null,
+	constructor(image = null,
 		srcX = 0,
 		srcY = 0,
 		srcW = 0,
@@ -13,7 +19,7 @@ class Sprite {
 		height = 0) {
 		this.datastore = DataStore.getInstance();
 		this.ctx = this.datastore.ctx;
-		this.img = img;
+		this.image = image;
 		this.srcX = srcX;
 		this.srcY = srcY;
 		this.srcW = srcW;
@@ -25,7 +31,7 @@ class Sprite {
 	}
 
 	static getImage(key) {
-		//存在Sprite类没有初始化情况
+		//存在Sprite类没有初始化DataStore情况
 		if (!this.datastore) {
 			this.datastore = DataStore.getInstance();
 		}
@@ -42,7 +48,7 @@ class Sprite {
 	 * width 要使用的宽度
 	 * height 要使用的高度
 	 */
-	draw(img = this.img,
+	draw(image = this.image,
 		srcX = this.srcX,
 		srcY = this.srcY,
 		srcW = this.srcW,
@@ -51,7 +57,7 @@ class Sprite {
 		y = this.y,
 		width = this.width,
 		height = this.height) {
-		this.ctx.drawImage(img, srcX, srcY, srcW, srcH, x, y, width, height);
+		this.ctx.drawImage(image, srcX, srcY, srcW, srcH, x, y, width, height);
 	}
 }
 

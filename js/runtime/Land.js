@@ -17,16 +17,15 @@ class Land extends Sprite {
 	draw() {
 		this.landX = this.landX + this.landSpeed;
 		//当偏移的宽度大于图片宽度减去屏幕宽度时，重置偏移数为0
-		if (this.landX >= (this.img.width - DataStore.getInstance().canvas.width)) {
+		if (this.landX >= (this.image.width - DataStore.getInstance().canvas.width)) {
 			this.landX = 0;
 		}
 		//参数值为构造方法时初始化的值
-		super.draw(this.img,
+		super.draw(this.image,
 			this.srcX,
 			this.srcY,
 			this.srcW,
-			this.srcH, 
-			-this.landX,
+			this.srcH, -this.landX,
 			this.y,
 			this.width,
 			this.height);

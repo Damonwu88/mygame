@@ -1,3 +1,9 @@
+/* 游戏开始按钮类
+ * @Author: Damon Wu 
+ * @Date: 2018-08-21 10:32:23 
+ * @Last Modified by: Damon Wu
+ * @Last Modified time: 2018-08-21 12:04:33
+ */
 import DataStore from "../base/DataStore.js";
 import Sprite from "../base/Sprite.js";
 
